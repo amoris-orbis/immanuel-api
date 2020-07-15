@@ -6,7 +6,8 @@
     "type": "project",
     "require": {
         "php": "^7.2.5",
-        "laravel/lumen-framework": "^7.0"
+        "laravel/lumen-framework": "^7.0",
+        "sunlight/immanuel-chart": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.9.1",
@@ -38,5 +39,11 @@
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ]
-    }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../sunlightdigital/packages/immanuel-chart"
+        }
+    ]
 }

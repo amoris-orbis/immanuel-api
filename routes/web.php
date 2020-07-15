@@ -13,6 +13,11 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
+$router->get('/', function () {
+    return redirect(config('app.parent_site_url'));
+});
+
+$router->group(['middleware' => 'chart', 'prefix' => 'chart'], function () use ($router) {
+    $router->post('natal', 'ChartController@natalChart');
+    $router->post('solar', 'ChartController@solarChart');
 });
