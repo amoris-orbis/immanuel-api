@@ -1,6 +1,6 @@
 <?php
 
-class ChartDataTest extends TestCase
+class ChartDataTest extends ChartTestCase
 {
     /**
      * Ensure the python script returns JSON & has correct data.
@@ -9,7 +9,7 @@ class ChartDataTest extends TestCase
      */
     public function testNatalChartJson()
     {
-        $this->json('POST', '/chart/natal', $this->natalChartInput)->seeJson([
+        $this->post('/chart/natal', $this->natalChartInput)->seeJson([
             'planet' => 'Sun',
             'sign' => 'Scorpio',
         ]);
@@ -17,7 +17,7 @@ class ChartDataTest extends TestCase
 
     public function testSolarChartJson()
     {
-        $this->json('POST', '/chart/solar', $this->solarChartInput)->seeJson([
+        $this->post('/chart/solar', $this->solarChartInput)->seeJson([
             'planet' => 'Moon',
             'sign' => 'Sagittarius',
         ]);

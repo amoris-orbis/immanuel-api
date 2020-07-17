@@ -25,7 +25,7 @@ $app = new Laravel\Lumen\Application(
 
 $app->withFacades();
 
-// $app->withEloquent();
+$app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------
@@ -72,12 +72,8 @@ $app->configure('app');
 |
 */
 
-// $app->middleware([
-//     App\Http\Middleware\ExampleMiddleware::class
-// ]);
-
 $app->routeMiddleware([
-    // 'auth' => App\Http\Middleware\Authenticate::class,
+    'auth' => App\Http\Middleware\Authenticate::class,
     'chart' => App\Http\Middleware\ChartValidation::class,
 ]);
 
@@ -92,8 +88,8 @@ $app->routeMiddleware([
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
+$app->register(App\Providers\AppServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
 /*

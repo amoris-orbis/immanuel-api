@@ -3,7 +3,8 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\User;
-use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,10 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define(User::class, function () {
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
+        'api_key' => hash('sha256', Str::random(32)),
+        'api_secret' => Hash::make('secret'),
+        'quota' => 100,
     ];
 });

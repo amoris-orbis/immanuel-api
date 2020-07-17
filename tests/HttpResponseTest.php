@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Arr;
 
-class HttpResponseTest extends TestCase
+class HttpResponseTest extends ChartTestCase
 {
     /**
      * Ensure a 200 OK response with valid natal data.
@@ -11,8 +11,8 @@ class HttpResponseTest extends TestCase
      */
     public function testValidNatalRequest()
     {
-        $response = $this->call('POST', '/chart/natal', $this->natalChartInput);
-        $this->assertEquals(200, $response->status());
+        $this->post('/chart/natal', $this->natalChartInput);
+        $this->assertEquals(200, $this->response->status());
     }
 
     /**
@@ -22,8 +22,8 @@ class HttpResponseTest extends TestCase
      */
     public function testValidSolarRequest()
     {
-        $response = $this->call('POST', '/chart/solar', $this->solarChartInput);
-        $this->assertEquals(200, $response->status());
+        $this->post('/chart/solar', $this->solarChartInput);
+        $this->assertEquals(200, $this->response->status());
     }
 
     /**
@@ -34,16 +34,16 @@ class HttpResponseTest extends TestCase
      */
     public function testBadNatalRequestMalformedData()
     {
-        $chartInput = ['birth_date' => '30/10/2000'] + $this->natalChartInput;
-        $response = $this->call('POST', '/chart/natal', $chartInput);
-        $this->assertEquals(400, $response->status());
+        $natalChartInput = Arr::set($this->natalChartInput, 'birth_date', '30/10/2000');
+        $this->post('/chart/natal', $natalChartInput);
+        $this->assertEquals(400, $this->response->status());
     }
 
     public function testBadSolarRequestMalformedData()
     {
-        $chartInput = ['solar_return_year' => '25'] + $this->solarChartInput;
-        $response = $this->call('POST', '/chart/solar', $chartInput);
-        $this->assertEquals(400, $response->status());
+        $solarChartInput = Arr::set($this->solarChartInput, 'solar_return_year', '25');
+        $this->post('/chart/solar', $solarChartInput);
+        $this->assertEquals(400, $this->response->status());
     }
 
     /**
@@ -54,9 +54,9 @@ class HttpResponseTest extends TestCase
      */
     public function testBadNatalRequestMissingData()
     {
-        $chartInput = Arr::except($this->natalChartInput, 'latitude');
-        $response = $this->call('POST', '/chart/natal', $chartInput);
-        $this->assertEquals(400, $response->status());
+        $natalChartInput = Arr::except($this->natalChartInput, 'latitude');
+        $this->post('/chart/natal', $natalChartInput);
+        $this->assertEquals(400, $this->response->status());
     }
 
     /**
@@ -67,7 +67,7 @@ class HttpResponseTest extends TestCase
      */
     public function testBadSolarRequestMissingData()
     {
-        $response = $this->call('POST', '/chart/solar', $this->natalChartInput);
-        $this->assertEquals(400, $response->status());
+        $this->post('/chart/solar', $this->natalChartInput);
+        $this->assertEquals(400, $this->response->status());
     }
 }
