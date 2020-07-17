@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0febd996696cda3b9d4e6a25b6399faf",
+    "content-hash": "8572e0f735f6ac5dbff331b8f6ee2aab",
     "packages": [
         {
             "name": "brick/math",
@@ -2366,11 +2366,17 @@
         },
         {
             "name": "sunlight/immanuel-chart",
-            "version": "dev-master",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sunlight/immanuel-chart.git",
+                "reference": "818b49b0fe9a3bac5a5a9b92d98f38c3a265fb96"
+            },
             "dist": {
-                "type": "path",
-                "url": "../../sunlightdigital/packages/immanuel-chart",
-                "reference": "8142bc2ce03472c32e8e84c312a40c9b5c646974"
+                "type": "zip",
+                "url": "https://api.github.com/repos/sunlight/immanuel-chart/zipball/818b49b0fe9a3bac5a5a9b92d98f38c3a265fb96",
+                "reference": "818b49b0fe9a3bac5a5a9b92d98f38c3a265fb96",
+                "shasum": ""
             },
             "require-dev": {
                 "dms/phpunit-arraysubset-asserts": "^0.2.0",
@@ -2383,11 +2389,7 @@
                     "Sunlight\\ImmanuelChart\\": "src"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Sunlight\\ImmanuelChart\\Tests\\": "tests"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2397,10 +2399,8 @@
                     "email": "rob@sunlightdigital.net"
                 }
             ],
-            "description": "Laravel/Lumen package acting as a bridge to a Python astrology script powered by Flatlib.",
-            "transport-options": {
-                "relative": true
-            }
+            "description": "Lumen package - bridge to a Python astrology script powered by Flatlib.",
+            "time": "2020-07-16T14:46:37+00:00"
         },
         {
             "name": "symfony/console",
@@ -6106,9 +6106,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "sunlight/immanuel-chart": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
