@@ -16,36 +16,31 @@ class AuthorisationTest extends ChartTestCase
     public function testHeaderAuthPasses()
     {
         $this->authorise(self::AUTHORISE_HEADER);
-        $this->post('/chart/natal', $this->natalChartInput);
-        $this->assertEquals(200, $this->response->status());
+        $this->post('/chart/natal', $this->natalChartInput)->response->assertOk();
     }
 
     public function testBodyAuthPasses()
     {
         $this->authorise(self::AUTHORISE_BODY);
-        $this->post('/chart/natal', $this->natalChartInput);
-        $this->assertEquals(200, $this->response->status());
+        $this->post('/chart/natal', $this->natalChartInput)->response->assertOk();
     }
 
     public function testBadAuthKeyFails()
     {
         $this->apiKey = 'Wrong_Key';
         $this->authorise(self::AUTHORISE_HEADER);
-        $this->post('/chart/natal', $this->natalChartInput);
-        $this->assertEquals(401, $this->response->status());
+        $this->post('/chart/natal', $this->natalChartInput)->response->assertUnauthorized();
     }
 
     public function testBadAuthSecretFails()
     {
         $this->apiSecret = 'Wrong_Secret';
         $this->authorise(self::AUTHORISE_HEADER);
-        $this->post('/chart/natal', $this->natalChartInput);
-        $this->assertEquals(401, $this->response->status());
+        $this->post('/chart/natal', $this->natalChartInput)->response->assertUnauthorized();
     }
 
     public function testNoAuthFails()
     {
-        $this->post('/chart/natal', $this->natalChartInput);
-        $this->assertEquals(401, $this->response->status());
+        $this->post('/chart/natal', $this->natalChartInput)->response->assertUnauthorized();
     }
 }

@@ -11,8 +11,7 @@ class HttpResponseTest extends ChartTestCase
      */
     public function testValidNatalRequest()
     {
-        $this->post('/chart/natal', $this->natalChartInput);
-        $this->assertEquals(200, $this->response->status());
+        $this->post('/chart/natal', $this->natalChartInput)->response->assertOk();
     }
 
     /**
@@ -22,8 +21,7 @@ class HttpResponseTest extends ChartTestCase
      */
     public function testValidSolarRequest()
     {
-        $this->post('/chart/solar', $this->solarChartInput);
-        $this->assertEquals(200, $this->response->status());
+        $this->post('/chart/solar', $this->solarChartInput)->response->assertOk();
     }
 
     /**
@@ -35,15 +33,13 @@ class HttpResponseTest extends ChartTestCase
     public function testBadNatalRequestMalformedData()
     {
         $natalChartInput = Arr::set($this->natalChartInput, 'birth_date', '30/10/2000');
-        $this->post('/chart/natal', $natalChartInput);
-        $this->assertEquals(400, $this->response->status());
+        $this->post('/chart/natal', $natalChartInput)->assertTrue($this->response->isClientError());
     }
 
     public function testBadSolarRequestMalformedData()
     {
         $solarChartInput = Arr::set($this->solarChartInput, 'solar_return_year', '25');
-        $this->post('/chart/solar', $solarChartInput);
-        $this->assertEquals(400, $this->response->status());
+        $this->post('/chart/solar', $solarChartInput)->assertTrue($this->response->isClientError());
     }
 
     /**
@@ -55,8 +51,7 @@ class HttpResponseTest extends ChartTestCase
     public function testBadNatalRequestMissingData()
     {
         $natalChartInput = Arr::except($this->natalChartInput, 'latitude');
-        $this->post('/chart/natal', $natalChartInput);
-        $this->assertEquals(400, $this->response->status());
+        $this->post('/chart/natal', $natalChartInput)->assertTrue($this->response->isClientError());
     }
 
     /**
@@ -67,7 +62,6 @@ class HttpResponseTest extends ChartTestCase
      */
     public function testBadSolarRequestMissingData()
     {
-        $this->post('/chart/solar', $this->natalChartInput);
-        $this->assertEquals(400, $this->response->status());
+        $this->post('/chart/solar', $this->natalChartInput)->assertTrue($this->response->isClientError());
     }
 }

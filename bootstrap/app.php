@@ -74,6 +74,7 @@ $app->configure('app');
 
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
+    'quota' => App\Http\Middleware\QuotaCheck::class,
     'chart' => App\Http\Middleware\ChartValidation::class,
 ]);
 

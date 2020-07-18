@@ -17,9 +17,10 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('api_key', 64)->unique();
             $table->string('api_secret');
+            $table->date('start');
             $table->mediumInteger('quota')->default(0);
-            $table->mediumInteger('batch_requests')->default(0);
-            $table->integer('total_requests')->default(0);
+            $table->mediumInteger('requests')->default(0);
+            $table->integer('lifetime_requests')->default(0);
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\User;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -21,6 +22,7 @@ $factory->define(User::class, function () {
     return [
         'api_key' => hash('sha256', Str::random(32)),
         'api_secret' => Hash::make('secret'),
+        'start' => Carbon::today()->startOfMonth(),
         'quota' => 100,
     ];
 });

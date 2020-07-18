@@ -17,7 +17,7 @@ $router->get('/', function () {
     return redirect(config('app.parent_site_url'));
 });
 
-$router->group(['middleware' => ['auth', 'chart'], 'prefix' => 'chart'], function () use ($router) {
+$router->group(['middleware' => ['auth', 'quota', 'chart'], 'prefix' => 'chart'], function () use ($router) {
     $router->post('natal', 'ChartController@natalChart');
     $router->post('solar', 'ChartController@solarChart');
 });

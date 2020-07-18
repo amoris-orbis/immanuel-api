@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Laravel\Lumen\Testing\TestCase;
 
 abstract class ChartTestCase extends TestCase
@@ -20,9 +22,9 @@ abstract class ChartTestCase extends TestCase
      * Headers & credentials for auth testing.
      *
      */
-    protected $apiKey = 'Testing_Key';
+    protected $apiKey;
 
-    protected $apiSecret = 'Testing_Secret';
+    protected $apiSecret;
 
     protected $headers = [];
 
@@ -33,6 +35,8 @@ abstract class ChartTestCase extends TestCase
      *
      */
     protected $user;
+
+    protected $quota = 10;
 
     /**
      * Arbitrary chart details for consistent testing.
@@ -49,9 +53,16 @@ abstract class ChartTestCase extends TestCase
     {
         parent::setUp();
 
+        $this->apiKey = Str::random(32);
+        $this->apiSecret = 'secret';
+
         $this->user = factory('App\User')->create([
             'api_key' => hash('sha256', $this->apiKey),
             'api_secret' => Hash::make($this->apiSecret),
+            'start' => Carbon::today()->startOfMonth(),
+            'quota' => $this->quota,
+            'requests' => 0,
+            'lifetime_requests' => 100,
         ]);
 
         $this->natalChartInput = [
