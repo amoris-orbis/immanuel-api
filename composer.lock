@@ -2366,16 +2366,16 @@
         },
         {
             "name": "sunlight/immanuel-chart",
-            "version": "v1.0.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sunlight/immanuel-chart.git",
-                "reference": "818b49b0fe9a3bac5a5a9b92d98f38c3a265fb96"
+                "reference": "21dfb0c1616f69ed93a170ed8955128fc04409fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sunlight/immanuel-chart/zipball/818b49b0fe9a3bac5a5a9b92d98f38c3a265fb96",
-                "reference": "818b49b0fe9a3bac5a5a9b92d98f38c3a265fb96",
+                "url": "https://api.github.com/repos/sunlight/immanuel-chart/zipball/21dfb0c1616f69ed93a170ed8955128fc04409fe",
+                "reference": "21dfb0c1616f69ed93a170ed8955128fc04409fe",
                 "shasum": ""
             },
             "require-dev": {
@@ -2400,7 +2400,7 @@
                 }
             ],
             "description": "Lumen package - bridge to a Python astrology script powered by Flatlib.",
-            "time": "2020-07-16T14:46:37+00:00"
+            "time": "2020-07-19T01:19:45+00:00"
         },
         {
             "name": "symfony/console",
