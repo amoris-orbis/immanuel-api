@@ -36,13 +36,19 @@ class UserDataTest extends ChartTestCase
     }
 
     /**
-     * Ensure user's requests are blocked if quota is reached.
+     * Ensure user's requests are blocked if quota is reached & allowed if quota is 0.
      *
      * @return void
      */
-    public function testForbidden()
+    public function testQuotaForbidden()
     {
         $this->user->update(['requests' => $this->user->quota]);
         $this->post('/chart/natal', $this->natalChartInput)->response->assertForbidden();
+    }
+
+    public function testZeroQuotaOk()
+    {
+        $this->user->update(['requests' => 1, 'quota' => 0]);
+        $this->post('/chart/natal', $this->natalChartInput)->response->assertOk();
     }
 }

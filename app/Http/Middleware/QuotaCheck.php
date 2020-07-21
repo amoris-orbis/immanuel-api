@@ -18,8 +18,8 @@ class QuotaCheck
      */
     public function handle($request, Closure $next)
     {
-        // If quota is reached then forbid access.
-        if (Auth::user()->requests >= Auth::user()->quota) {
+        // If quota is reached then forbid access, unless it is infinite (ie. zero).
+        if (Auth::user()->quota > 0 && Auth::user()->requests >= Auth::user()->quota) {
             return response(null, Response::HTTP_FORBIDDEN);
         }
 
