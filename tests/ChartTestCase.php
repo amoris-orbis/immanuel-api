@@ -74,6 +74,7 @@ abstract class ChartTestCase extends TestCase
         ];
 
         $this->solarChartInput = Arr::add($this->natalChartInput, 'solar_return_year', 2025);
+        $this->progressedChartInput = Arr::add($this->natalChartInput, 'progression_date', '2020-07-01');
 
         // Auth by default if required.
         if ($this->authorisationType !== self::AUTHORISE_NONE) {

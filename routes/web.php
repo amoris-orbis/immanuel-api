@@ -20,4 +20,5 @@ $router->get('/', function () {
 $router->group(['middleware' => ['auth', 'quota', 'chart'], 'prefix' => 'chart'], function () use ($router) {
     $router->post('natal', 'ChartController@natalChart');
     $router->post('solar', 'ChartController@solarChart');
+    $router->post('progressed', 'ChartController@progressedChart');
 });

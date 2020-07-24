@@ -41,4 +41,21 @@ class ChartController extends Controller
 
         return response(null, Response::HTTP_INTERNAL_SERVER_ERROR);
     }
+
+    /**
+     * Generate progressed chart data based on inputs.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function progressedChart(Request $request)
+    {
+        $chartData = Chart::create($request->all())->getProgressedChart($request->input('progression_date'));
+
+        if ($chartData !== false) {
+            return response()->json($chartData);
+        }
+
+        return response(null, Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
 }

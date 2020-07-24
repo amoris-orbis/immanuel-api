@@ -25,8 +25,14 @@ class ChartValidation
      */
     public function handle($request, Closure $next)
     {
-        if ($request->is('chart/solar')) {
-            $this->validators[] = 'solar';
+        switch ($request->path()) {
+            case 'chart/solar':
+                $this->validators[] = 'solar';
+                break;
+
+            case 'chart/progressed':
+                $this->validators[] = 'progressed';
+                break;
         }
 
         if (Chart::validate($request->all(), $this->validators)->fails()) {

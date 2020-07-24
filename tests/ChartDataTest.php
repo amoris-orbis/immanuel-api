@@ -22,4 +22,12 @@ class ChartDataTest extends ChartTestCase
             'sign' => 'Sagittarius',
         ]);
     }
+
+    public function testProgressedChartJson()
+    {
+        $this->post('/chart/progressed', $this->progressedChartInput)->seeJson([
+            'planet' => 'Moon',
+            'sign' => 'Virgo',
+        ]);
+    }
 }
