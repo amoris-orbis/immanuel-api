@@ -18,7 +18,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $fillable = [
-        'api_key', 'api_secret', 'start', 'quota', 'requests', 'lifetime_requests',
+        'api_key', 'api_secret', 'start', 'end', 'quota', 'requests', 'lifetime_requests',
     ];
 
     /**
@@ -28,5 +28,14 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     protected $hidden = [
         'api_secret',
+    ];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'start', 'end',
     ];
 }
