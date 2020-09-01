@@ -23,6 +23,7 @@ $factory->define(User::class, function () {
         'api_key' => hash('sha256', Str::random(32)),
         'api_secret' => Hash::make('secret'),
         'start' => Carbon::today()->startOfMonth(),
+        'end' => Carbon::today()->endOfMonth(),
         'quota' => 100,
     ];
 });
