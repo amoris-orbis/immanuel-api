@@ -26,3 +26,9 @@ Pretty simple! Data is returned as a JSON array with detailed information on the
 ## Usage
 
 This API can be installed and used on any Lumen-supporting server that can also run Python scripts, since the [Immanuel Chart](https://github.com/sunlight/immanuel-chart) package it relies on generates chart data via a Python script at its core. Otherwise you can access the [Immanuel](https://immanuel.app) project's ready-built API for free - see the website for examples and to sign up for your free API account.
+
+## License
+
+This project is licensed under GPLv2 in order to satisfy the requirements of astro.com's Swiss Ephemeris, as used by the [Flatlib library](https://github.com/flatangle/flatlib/) which is wrapped by the [Immanuel Chart](https://github.com/sunlight/immanuel-chart) package used by this project.
+
+The Lumen framework is open-sourced software licensed under the MIT license, [compatible](https://www.gnu.org/licenses/license-list.html#Expat) with this project's GNUv2 license.
