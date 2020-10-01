@@ -18,7 +18,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $fillable = [
-        'api_key', 'api_secret', 'start', 'end', 'quota', 'requests', 'lifetime_requests',
+        'api_key', 'api_secret', 'method_access', 'start', 'end', 'quota', 'requests', 'lifetime_requests',
     ];
 
     /**
@@ -28,6 +28,15 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     protected $hidden = [
         'api_secret',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'method_access' => 'array',
     ];
 
     /**

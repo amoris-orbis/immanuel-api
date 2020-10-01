@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Auth;
 
 class QuotaCheck
 {
@@ -19,14 +18,14 @@ class QuotaCheck
     public function handle($request, Closure $next)
     {
         // If quota is reached then forbid access, unless it is infinite (ie. zero).
-        if (Auth::user()->quota > 0 && Auth::user()->requests >= Auth::user()->quota) {
+        if ($request->user()->quota > 0 && $request->user()->requests >= $request->user()->quota) {
             return response(null, Response::HTTP_FORBIDDEN);
         }
 
         // If quota is not reached then increment counters.
-        Auth::user()->update([
-            'requests' => Auth::user()->requests + 1,
-            'lifetime_requests' => Auth::user()->lifetime_requests + 1,
+        $request->user()->update([
+            'requests' => $request->user()->requests + 1,
+            'lifetime_requests' => $request->user()->lifetime_requests + 1,
         ]);
 
         return $next($request);
