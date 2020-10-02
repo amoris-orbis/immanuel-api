@@ -14,4 +14,16 @@ return [
 
     'parent_site_url' => 'https://immanuel.app',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Throttled time between allowed requests per user
+    |--------------------------------------------------------------------------
+    |
+    | Each user has their request rate throttled so s to avoid overloading the
+    | server and/or re-selling the service with the same set of API keys.
+    |
+    */
+
+    'request_throttle_seconds' => env('REQUEST_THROTTLE_SECONDS', 5),
+
 ];
