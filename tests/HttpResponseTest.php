@@ -25,6 +25,17 @@ class HttpResponseTest extends ChartTestCase
     }
 
     /**
+     * Ensure a 200 OK response with house system weirdly cased.
+     *
+     * @return void
+     */
+    public function testValidHouseSystem()
+    {
+        $natalChartInput = Arr::set($this->natalChartInput, 'house_system', 'POLICH page');
+        $this->post('/chart/natal', $natalChartInput)->response->assertOk();
+    }
+
+    /**
      * Ensure a 400 "Bad Request" response for malformed data.
      * In this case birth_date & solar_return_year are formatted incorrectly.
      *
