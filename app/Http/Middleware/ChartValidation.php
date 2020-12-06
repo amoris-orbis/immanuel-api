@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Response;
-use Sunlight\ImmanuelChart\Facades\Chart;
+use RiftLab\ImmanuelChart\Facades\Chart;
 
 class ChartValidation
 {

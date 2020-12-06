@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Sunlight\ImmanuelChart\Facades\Chart;
+use RiftLab\ImmanuelChart\Facades\Chart;
 
 class ChartController extends Controller
 {

@@ -1,13 +1,13 @@
 {
-    "name": "sunlight/immanuel-api",
+    "name": "theriftlab/immanuel-api",
     "description": "A lightweight, Lumen-based astrology API.",
-    "keywords": ["framework", "laravel", "lumen"],
+    "keywords": ["astrology", "api", "laravel", "lumen"],
     "license": "GPL-2.0-only",
     "type": "project",
     "require": {
         "php": "^7.2.5",
         "laravel/lumen-framework": "^7.0",
-        "sunlight/immanuel-chart": "^1.0"
+        "theriftlab/immanuel-chart": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.9.1",
