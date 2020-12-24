@@ -13,12 +13,6 @@
 |
 */
 
-$router->get('/', function () {
-    return redirect(config('app.parent_site_url'));
-});
-
-$router->group(['middleware' => ['auth', 'throttle', 'access', 'quota', 'chart'], 'prefix' => 'chart'], function () use ($router) {
-    $router->post('natal', 'ChartController@natalChart');
-    $router->post('solar', 'ChartController@solarChart');
-    $router->post('progressed', 'ChartController@progressedChart');
+$router->get('/', function () use ($router) {
+    return $router->app->version();
 });
