@@ -4,6 +4,9 @@ namespace Database\Factories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserFactory extends Factory
 {
@@ -22,8 +25,12 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
-            'email' => $this->faker->unique()->safeEmail,
+            'api_key' => hash('sha256', Str::random(32)),
+            'api_secret' => Hash::make('secret'),
+            'method_access' => ['natal', 'solar', 'progressed', 'synastry', 'transits'],
+            'start' => Carbon::today()->startOfMonth(),
+            'end' => Carbon::today()->endOfMonth(),
+            'quota' => 10,
         ];
     }
 }

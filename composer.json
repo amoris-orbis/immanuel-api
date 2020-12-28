@@ -1,12 +1,13 @@
 {
-    "name": "laravel/lumen",
-    "description": "The Laravel Lumen Framework.",
-    "keywords": ["framework", "laravel", "lumen"],
-    "license": "MIT",
+    "name": "theriftlab/immanuel-api",
+    "description": "A lightweight, Lumen-based astrology API.",
+    "keywords": ["astrology", "api", "laravel", "lumen"],
+    "license": "GPL-2.0-only",
     "type": "project",
     "require": {
         "php": "^7.3|^8.0",
-        "laravel/lumen-framework": "^8.0"
+        "laravel/lumen-framework": "^8.0",
+        "theriftlab/immanuel-chart": "^1.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
